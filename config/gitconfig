@@ -1,7 +1,6 @@
 [user]
-  email = thor@thorerik.com
-  name = Thor Erik Lie
-  signingkey = ~/.ssh/signingkey
+  email = aida@beorn.re
+  name = Aida Lie
   allowedSignersFile = ~/.allowed_signers
 
 [alias]
@@ -64,6 +63,10 @@
 [pretty]
   shortlog = tformat:%C(red)%h%Creset -%C(bold cyan)%d%Creset%C(bold blue) <%aN>%Creset %s %C(dim green)(%cr)%Creset
 
+[includeIf "gitdir:~/dotFiles/*"]
+  path = ~/.gitpersonal
+[includeIf "gitdir:~/Source/personal/**"]
+  path = ~/.gitpersonal
 [includeIf "gitdir:~/src/work/**"]
   path = ~/.gitwork
 [gitbutler]
