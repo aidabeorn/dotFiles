@@ -4,9 +4,12 @@
 " le plugins https://github.com/junegunn/vim-plug
 " http://patrickmarchand.com/posts/neovim-tuto.html
 call plug#begin('~/.config/nvim/plugged')
+
+Plug 'vim-denops/denops.vim'
+Plug 'Shougo/ddc.vim'
+
 Plug 'tpope/vim-sensible'
 Plug 'benekastah/neomake'
-Plug 'Shougo/deoplete.nvim'
 Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
 
@@ -14,7 +17,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " UltiSnips + Snippets
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " NERDtree + git plugin
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTree'] } | Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -29,11 +32,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'mhinz/vim-startify'
 
-Plug 'thorerik/vim-mutt-helper'
-
 call plug#end()
 
-let g:deoplete#enable_at_startup=1
 let mapleader=","
 
 if !exists('g:sp_airline_disable_powerline_fonts') || g:sp_airline_disable_powerline_fonts == 0
@@ -46,9 +46,6 @@ endif
 let g:airline_theme='murmur'
 
 set background=dark
-"let g:solarized_visibility = "high"
-"let g:solarized_contrast = "high"
-"let g:solarized_termcolors = 256
 colorscheme catppuccin
 
 set nomodeline
@@ -70,15 +67,6 @@ set splitright
 if !has('nvim')
   set encoding=utf-8
 endif
-""""" SNIPPETS """"""
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-""""" END SNIPPETS """""
 
 let g:creamInvisibleShortCut = "<F5>" "for my F4 goto next error
 """"" KEYBOARD MAPINGS """""
