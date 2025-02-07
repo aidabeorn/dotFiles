@@ -67,6 +67,8 @@
   path = ~/.gitpersonal
 [includeIf "gitdir:~/Source/personal/**"]
   path = ~/.gitpersonal
+[includeIf "gitdir:~/src/personal/**"]
+  path = ~/.gitpersonal
 [includeIf "gitdir:~/src/work/**"]
   path = ~/.gitwork
 [gitbutler]
