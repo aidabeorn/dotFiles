@@ -72,15 +72,15 @@ if [ "$CREATE_WORK_CONFIG" = true ]; then
     cat > ~/.gitwork <<EOF
 ; vim: ft=gitconfig
 [user]
-    email = ${WORK_EMAIL}
-    name = ${WORK_NAME}
-    signingkey = ${WORK_SIGNING_KEY}
+  email = ${WORK_EMAIL}
+  name = ${WORK_NAME}
+  signingkey = ${WORK_SIGNING_KEY}
 [commit]
-    gpgsign = true
+  gpgsign = true
 [tag]
-    gpgsign = true
+  gpgsign = true
 [gpg "ssh"]
-    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 EOF
 
     echo "Git work configuration file generated successfully!"
