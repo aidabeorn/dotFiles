@@ -1,121 +1,90 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-final_space: true
-version: 2
-console_title_template: "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}"
+
+secondary_prompt:
+  template: "❯❯ "
+  foreground: magenta
+  background: transparent
 transient_prompt:
+  template: "❯ "
+  background: transparent
   foreground_templates:
+  - "{{if gt .Code 0}}red{{end}}"
+  - "{{if eq .Code 0}}magenta{{end}}"
+console_title_template: "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}"
+blocks:
+- type: rprompt
+  alignment: right
+  overflow: hidden
+  segments:
+  - properties:
+      cache_duration: none
+      threshold: 1000
+    foreground: green
+    background: transparent
+    type: executiontime
+    style: plain
+  - properties:
+      cache_duration: none
+    template: " {{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
+    foreground: green
+    background: transparent
+    type: aws
+    style: plain
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      cache_duration: none
+      style: full
+    template: "{{ .Path }}"
+    foreground: blue
+    background: transparent
+    type: path
+    style: plain
+  - properties:
+      azure_devops_icon: 
+      bitbucket_icon: 
+      branch_ahead_icon: ↑
+      branch_behind_icon: ↓
+      branch_gone_icon: ≢
+      branch_icon: 
+      branch_identical_icon: ≡
+      cache_duration: none
+      cherry_pick_icon: 
+      codeberg_icon: 
+      codecommit_icon: 
+      commit_icon: 
+      fetch_bare_info: true
+      fetch_stash_count: true
+      fetch_status: true
+      fetch_upstream_icon: true
+      fetch_worktree_count: true
+      git_icon: 
+      github_icon: 
+      gitlab_icon: 
+      merge_icon: 
+      no_commits_icon: 
+      rebase_icon: 
+      revert_icon: 
+      tag_icon: 
+    template: " {{ .UpstreamIcon }} {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}<cyan>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}</>"
+    foreground: green
+    background: transparent
+    type: git
+    style: plain
+  newline: true
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      cache_duration: none
+    template: ❯
+    background: transparent
+    type: text
+    style: plain
+    foreground_templates:
     - "{{if gt .Code 0}}red{{end}}"
     - "{{if eq .Code 0}}magenta{{end}}"
-  background: 'transparent'
-  template: '❯ '
-secondary_prompt:
-  foreground: 'magenta'
-  background: 'transparent'
-  template: '❯❯ '
-blocks:
-  - type: rprompt
-    alignment: right
-    overflow: hidden
-    segments:
-      - type: executiontime
-        style: plain
-        foreground: 'green'
-        background: 'transparent'
-        properties:
-          threshold: 1000
-      # - type: docker
-      #   style: plain
-      #   foreground: "green"
-      #   background: "transparent"
-      #   template: "  {{ .Context }} "
-      # - type: kubectl
-      #   style: plain
-      #   foreground: 'green'
-      #   background: 'transparent'
-      #   template: " {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
-      #- type: npm
-      #  style: plain
-      #  foreground: 'green'
-      #  background: 'transparent'
-      #  template: " {{ .Full }} "
-      #- type: deno
-      #  style: plain
-      #  foreground: 'green'
-      #  background: 'transparent'
-      #  template: "  {{ .Full }} "
-      #- type: bun
-      #  style: plain
-      #  foreground: 'green'
-      #  background: 'transparent'
-      #  template: " 🥟 {{ .Full }} "
-      #- type: rust
-      #  style: plain
-      #  foreground: 'green'
-      #  background: 'transparent'
-      #  template: "  {{ .Full }} "
-      #- type: terraform
-      #  style: plain
-      #  foreground: 'green'
-      #  background: 'transparent'
-      #  template: " {{ .WorkspaceName }}{{ if .Version }} {{ .Version }}{{ end }}"
-      - type: aws
-        style: plain
-        foreground: 'green'
-        background: 'transparent'
-        template: " {{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
-
-
-
-  - type: prompt
-    alignment: left
-    newline: true
-    segments:
-      - type: path
-        style: plain
-        foreground: "blue"
-        background: "transparent"
-        template: '{{ .Path }}'
-        properties:
-          style: full
-      - type: git
-        style: plain
-        foreground: "green"
-        background: "transparent"
-        template: ' {{ .UpstreamIcon }} {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}<cyan>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}</>'
-        properties:
-          fetch_status: true
-          fetch_stash_count: true
-          fetch_worktree_count: true
-          fetch_upstream_icon: true
-          fetch_bare_info: true
-          branch_icon:  
-          branch_identical_icon: ≡
-          branch_ahead_icon: ↑
-          branch_behind_icon: ↓
-          branch_gone_icon: ≢
-          commit_icon: 
-          tag_icon: 
-          rebase_icon: 
-          cherry_pick_icon: 
-          revert_icon: 
-          merge_icon: 
-          no_commits_icon: 
-          github_icon: 
-          gitlab_icon: 
-          bitbucket_icon: 
-          azure_devops_icon: 
-          codecommit_icon: 
-          codeberg_icon: 
-          git_icon: 
-  - type: prompt
-    alignment: left
-    newline: true
-    segments:
-      - type: text
-        style: plain
-        foreground_templates: [
-          "{{if gt .Code 0}}red{{end}}",
-          "{{if eq .Code 0}}magenta{{end}}",
-        ]
-        background: 'transparent'
-        template: '❯'
+  newline: true
+version: 3
+final_space: true
