@@ -1,6 +1,4 @@
 [user]
-  email = aida@beorn.re
-  name = Aida Lie
   allowedSignersFile = ~/.allowed_signers
 
 [alias]
